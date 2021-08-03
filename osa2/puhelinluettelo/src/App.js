@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
+import './index.css'
 import personService from './services/persons'
 
 const Notification = ({ message, color }) => {
@@ -65,14 +66,22 @@ const App = () => {
         setNewNumber('')
         setFilter('')
         setFilteredPersons(persons)
-        })
         setColor(true)
         setErrorMessage(
           `Added ${newName}`
         )
+        
         setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
+        })
+        .catch(error => {
+          setColor(false)
+          setErrorMessage(error.response.data.error)})
+          setNewName('')
+          setNewNumber('')
+        
+        
       } else {
         const confirmUpdate = window.confirm(`${newName} is already added to phonebook, replace the old number to new one? `)
 
@@ -89,9 +98,6 @@ const App = () => {
               persons.map((person) =>
                 person.id !== id ? person : returnedPerson)
             )
-            setNewName('')
-            setNewNumber('')
-            setFilter('')
           })
           .catch(error => {
             setColor(false)
@@ -99,19 +105,17 @@ const App = () => {
             setTimeout(() => {
               setErrorMessage(null)
             }, 5000)})
-          setColor(true)
+          
+            setColor(true)
           setErrorMessage(
             `Updated ${newName}`
           )
           setTimeout(() => {
             setErrorMessage(null)
           }, 5000)
-
             setNewName('')
             setNewNumber('')
             setFilter('')
-
-      
         } 
   }
 }
@@ -155,10 +159,7 @@ const App = () => {
     setTimeout(() => {
       setErrorMessage(null)
     }, 5000)
-
   }
-
-
   return (
     <div>
       <h2>Phonebook</h2>
