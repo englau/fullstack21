@@ -1,0 +1,63 @@
+GET http://localhost:3003/api/blogs
+
+###
+
+GET http://localhost:3003/api/blogs/1
+
+###
+
+DELETE http://localhost:3003/api/blogs/6116b456f7e19b2aa2556d08
+Content-Type:application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhpbGxhIiwiaWQiOiI2MTE1M2I4NzgyZWQwYjc2MDFiNjg5MDgiLCJpYXQiOjE2Mjg3ODM2NDB9.HXNvXPmt1V5TunnTOJtwg2TJWx7CCW8GqIuAlkJGehc
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type:application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkhpbGxhIiwiaWQiOiI2MTE1M2I4NzgyZWQwYjc2MDFiNjg5MDgiLCJpYXQiOjE2Mjg3ODM2NDB9.HXNvXPmt1V5TunnTOJtwg2TJWx7CCW8GqIuAlkJGehc
+
+
+{
+    "title": "Kaunis ilma",
+    "author": "Pekka",
+    "url": "www.blogi.fi",
+    "likes": 9
+}
+
+###
+
+PUT http://localhost:3003/api/blogs/611018a341ae434f411b6a77
+Content-Type: application/json
+
+{
+    "title": "Sateen jälkiin",
+    "author": "Hoo Moilanen",
+    "url": "www.blogi.fi",
+    "likes": 9
+}
+
+
+###
+
+POST http://localhost:3003/api/users
+Content-Type:application/json
+
+{
+    "username": "Huu",
+    "name": "Herra",
+    "password": "sala"
+
+}
+
+###
+
+GET http://localhost:3003/api/users
+
+###
+
+POST http://localhost:3003/api/login
+Content-Type:application/json
+
+{
+    "username": "Huu",
+    "password": "sala"
+}
